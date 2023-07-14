@@ -1,5 +1,5 @@
 
-var userInput = $('#root')
+var userInput = ($('.TextInput').val())
 
 fetch(`https://shazam.p.rapidapi.com/auto-complete?term=${userInput}`, {
 "headers": {

@@ -7,19 +7,42 @@
     <title>Song Finder</title>
 </head>
 <div> Songs </div>
-<div class="dropdown">
-    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      Dropdown
-    </button>
-    <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-      <button class="dropdown-item" type="button">Action</button>
-      <button class="dropdown-item" type="button">Another action</button>
-      <button class="dropdown-item" type="button">Something else here</button>
-    </div>
-  </div>
-  <input aria-activedescendant="" aria-autocomplete="both" aria-controls="results" aria-describedby="searchKeyboardControls" aria-haspopup="false" aria-label="Search Pandora" autocapitalize="none" autocomplete="off" class="GlobalSearchInput__input" data-qa="header_search_edit_text" placeholder="Find artists, songs, podcasts and more" spellcheck="false" type="search">
-<body>
 
+
+<body>
+    <div>
+        <nav class="navbar bg-body-tertiary">
+            <form class="container-fluid justify-content-start">
+            <button class="btn btn-outline-success me-2" type="button">Main button</button>
+            <img src="./assets/img/music-note.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+            </form>
+        </nav>
+    </div>
+
+    <form>
+        <fieldset>
+          <legend></legend>
+          <div class="mb-3">
+            <label for="TextInput" class="form-label">Enter an artist, song, or album name.</label>
+            <input type="text" id="TextInput" class="form-control" placeholder=" input">
+          </div>
+          <div class="mb-3">
+            <label for="Select" class="form-label">Choose Criteria</label>
+            <select id="Select" class="form-select">
+              <option>Artist</option>
+              <option>Song</option>
+              <option>Album</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </fieldset>
+      </form>
+
+    <div>
+        <footer>🎶 Powered by Shazam 🎶</footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="./assets/js/script.js"></script>
 </body>
