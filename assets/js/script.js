@@ -7,6 +7,7 @@ $(function () {
         userInput = ($('#TextInput').val())
         if(($('#TextInput').val()) !== undefined){
             console.log($('#TextInput').val())
+            queryString();
             getSearch();
         }  
     }
@@ -30,15 +31,10 @@ function getSearch(){
     });
 }
 
-const fieldsetForm = document.querySelector('#fieldset')
 
-
-function handleSearchFormSubmit(event) {
-  event.preventDefault();
-  const userinput = document.querySelector('#TextInput').value
-  console.log(userinput)
-  const queryString = './results.html?q='+userinput
-  location.assign(queryString)
-}
-
-fieldsetForm.addEventListener('submit', handleSearchFormSubmit)
+function queryString() {
+    const userinput = document.querySelector('#TextInput').value
+    console.log(userinput)
+    const queryString = './results.html?q='+userinput
+    location.assign(queryString)
+  }
