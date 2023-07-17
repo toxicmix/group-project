@@ -7,7 +7,7 @@ let retArray = JSON.parse(retString)
 console.log(retArray);
 
 $(function () {
-    var userInput = "west coast"//($('#TextInput').val())
+    var userInput = ($('#TextInput').val())
 
     fetch(`https://shazam.p.rapidapi.com/search?term=${userInput}&locale=en-US&offset=0&limit=5`, {
     "headers": {
@@ -25,9 +25,11 @@ $(function () {
     
     $('.btn-primary').on("click", function(event) {
         event.preventDefault();
+        var userInput = ($('#TextInput').val())
         if(($('#TextInput').val()) !== undefined){
             recentSearch.push($('#TextInput').val())
             console.log($('#TextInput').val())
+            queryString()
             getSearch();
         }  
     }
@@ -51,15 +53,12 @@ $(function () {
 //     });
 // }
 
-const fieldsetForm = document.querySelector('#fieldset')
+// const fieldsetForm = document.querySelector('#fieldset')
 
 
-function handleSearchFormSubmit(event) {
-  event.preventDefault();
+function queryString() {
   const userinput = document.querySelector('#TextInput').value
   console.log(userinput)
   const queryString = './results.html?q='+userinput
   location.assign(queryString)
 }
-
-fieldsetForm.addEventListener('submit', handleSearchFormSubmit)
