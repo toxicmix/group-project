@@ -5,6 +5,7 @@ localStorage.setItem("recent search", string)
 let retString = localStorage.getItem("recent search")
 let retArray = JSON.parse(retString)
 console.log(retArray);
+var randomButtonArtist = document.querySelector('#random-btn')
 
 $(function () {
     var userInput = ($('#TextInput').val())
@@ -59,6 +60,33 @@ $(function () {
 function queryString() {
   const userinput = document.querySelector('#TextInput').value
   console.log(userinput)
-  const queryString = './results.html?q='+userinput
+  let queryString = './results.html?q='+userinput
   location.assign(queryString)
 }
+
+function randomSong() {
+    const settings = {
+        async: true,
+        crossDomain: true,
+        url: 'https://shazam.p.rapidapi.com/charts/track?locale=en-US&pageSize=100&startFrom=0',
+        method: 'GET',
+        headers: {
+            'X-RapidAPI-Key': 'd2c16f9919mshf8833d93f140df5p1b038djsn746b6bea0db0',
+            'X-RapidAPI-Host': 'shazam.p.rapidapi.com'
+        }
+    };
+    
+    $.ajax(settings).done(function (response) {
+        console.log(response);
+    });
+}
+
+randomSong()
+
+function randomButton() {
+    var ran
+    let queryString = './results.htmls?q='
+    location.assign(queryString)
+}
+
+randomButtonArtist.addEventListener('click', randomButton)
