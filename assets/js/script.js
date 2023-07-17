@@ -37,4 +37,4 @@ function queryString() {
     console.log(userinput)
     const queryString = './results.html?q='+userinput
     location.assign(queryString)
-  }
+}
