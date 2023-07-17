@@ -1,7 +1,14 @@
-/*body {
-    background-image: url(../img/galaxy-background.jpg.crdownload);
-}*/
-div, h1{
+* {
+    font-family:monospace;
+    font-weight: bold;
+}
+h1{
+    font-size: 100px;
+    padding-bottom: 75px;
+    color: rgb(0, 178, 178);
+}
+
+div, h1, p, h2{
     display: flex;
     justify-content: center;
 }
@@ -9,16 +16,15 @@ div, h1{
 select.form-select, input.form-control{
     width: 50%;
     margin-left: 10px;
+    background-color:rgb(0, 178, 178);
 }
 
-* {
-    font-family:monospace;
-    font-weight: bold;
-}
+
  .btn-primary {
     display: inline-block;
     font-size: 22px;
     line-height: 22px;
-    margin-left: 470px;
+    margin-left: 46%;
     text-align: center;
- };
+ }
+
