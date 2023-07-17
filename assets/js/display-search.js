@@ -4,14 +4,10 @@ const currentUrl = window.location.href;
 var search = currentUrl.split('=')[1]
 search = search.replace(/%20/g , " ")
 console.log(search);
-recentSearch.push(search)
+recentSearchHandeler(search)
 
 
-let string = JSON.stringify(recentSearch)
-localStorage.setItem("recent search", string)
-let retString = localStorage.getItem("recent search")
-let retArray = JSON.parse(retString)
-console.log(retArray);
+
 
 $(function () {
     
@@ -30,18 +26,27 @@ $(function () {
     console.error(err);
     });
 
-    $('.btn-primary').on("click", function(event) {
+    $('.btn').on("click", function(event) {
         event.preventDefault();
-        userInput = ($('#TextInput').val())
-        if(($('#TextInput').val()) !== undefined){
-            console.log($('#TextInput').val())
-            queryString();
+        userInput = ($('#search-input').val())
+        if(($('#search-input').val()) !== undefined && ($('#search-input').val()) !== ""){
+            console.log($('#search-input').val())
+            recentSearchHandeler($('#search-input').val())
+            console.log(recentSearch)
             getSearch();
         }  
     }
     );
 });
 
+function recentSearchHandeler(input){
+    recentSearch.push(input)
+    let string = JSON.stringify(recentSearch)
+localStorage.setItem("recent search", string)
+let retString = localStorage.getItem("recent search")
+let retArray = JSON.parse(retString)
+console.log(retArray);
+}
 
 function getSearch(){
     fetch(`https://shazam.p.rapidapi.com/search?term=${userInput}&locale=en-US&offset=0&limit=5`, {
