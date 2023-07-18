@@ -1,16 +1,13 @@
 div, h1{
   display: flex;
   justify-content: center;
-}
-
-select.form-select, input.form-control{
-  width: 50%;
-  margin-left: 10px;
+  height: 200px;
 }
 
 * {
   font-family:monospace;
   font-weight: bold;
+  background-color: white;
 }
 .btn-primary {
   display: inline-block;
@@ -19,3 +16,8 @@ select.form-select, input.form-control{
   margin-left: 470px;
   text-align: center;
 };
+
+#container {
+  margin: 100px;
+  padding:100px;
+}
