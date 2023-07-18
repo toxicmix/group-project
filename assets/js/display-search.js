@@ -7,6 +7,13 @@ console.log(search);
 //recentSearchHandeler(search)
 var searchHistoryContainer = document.querySelector('#history');
 var resultContainer = document.querySelector('#result-text');
+var titleContainer = document.querySelector('#songTitle');
+var artistContainer = document.querySelector('#artistName');
+var imageContainer = (document.querySelector('#albumCover'));
+var linkContainer = (document.querySelector('#url'));
+var linkEl = document.querySelector('#link');
+var imageEl = document.querySelector('#coverImage');
+
 
 
 
@@ -23,8 +30,12 @@ $(function () {
     .then(response => {
     return response.json ()
     })
-    .then (data => {console.log((data).tracks.hits[0].track.subtitle)
+    .then (data => {console.log((data))
         resultContainer.innerHTML = ((data).tracks.hits[0].track.title);
+        titleContainer.innerHTML = ((data).tracks.hits[0].track.title);
+        artistContainer.innerHTML = ((data).tracks.hits[0].track.subtitle);
+        imageEl.src = ((data).tracks.hits[0].track.images.coverart);
+        linkEl.href = ((data).tracks.hits[0].track.url); 
     })
     .catch(err => {
     console.error(err);
@@ -45,26 +56,23 @@ $(function () {
     );
 });
 
-// function recentSearchHandeler(input){
-//     recentSearch.push(input)
-//     let string = JSON.stringify(recentSearch)
-// localStorage.setItem("recent search", string)
-// let retString = localStorage.getItem("recent search")
-// let retArray = JSON.parse(retString)
-// console.log(retArray);
-// }
-
 function getSearch(){
     fetch(`https://shazam.p.rapidapi.com/search?term=${userInput}&locale=en-US&offset=0&limit=5`, {
     "headers": {
-    "x-rapidapi-key": "d2c16f9919mshf8833d93f140df5p1b038djsn746b6bea0db0",
+    "x-rapidapi-key": "4ac1b5c699msha0388287f4d5944p19ae56jsn0e4cb01579fa",
     "x-rapidapi-host": "shazam.p.rapidapi.com"
     }
     })
     .then(response => {
     return response.json ()
     })
-    .then (data => {console.log((data).tracks.hits[0].track.subtitle)})
+    .then (data => {console.log((data))
+    resultContainer.innerHTML = ((data).tracks.hits[0].track.title);
+    titleContainer.innerHTML = ((data).tracks.hits[0].track.title);
+    artistContainer.innerHTML = ((data).tracks.hits[0].track.subtitle);
+    imageEl.src = ((data).tracks.hits[0].track.images.coverart);
+    linkEl.href = ((data).tracks.hits[0].track.url); 
+    })
     .catch(err => {
     console.error(err);
     });
