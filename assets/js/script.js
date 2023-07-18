@@ -1,4 +1,5 @@
 var userInput
+var randomButtonArtist = document.querySelector('#random-btn')
 
 $(function () {
     
