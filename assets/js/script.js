@@ -19,7 +19,7 @@ $(function () {
 function getSearch(){
     fetch(`https://shazam.p.rapidapi.com/search?term=${userInput}&locale=en-US&offset=0&limit=5`, {
     "headers": {
-    "x-rapidapi-key": "d2c16f9919mshf8833d93f140df5p1b038djsn746b6bea0db0",
+    "x-rapidapi-key": "5e5c5dcd9dmsh6104ddc534fba7dp170c60jsn3d6d9f75dea7",
     "x-rapidapi-host": "shazam.p.rapidapi.com"
     }
     })
@@ -47,7 +47,7 @@ function randomSong() {
         url: 'https://shazam.p.rapidapi.com/charts/track?locale=en-US&pageSize=20&startFrom=0',
         method: 'GET',
         headers: {
-            'X-RapidAPI-Key': '4ac1b5c699msha0388287f4d5944p19ae56jsn0e4cb01579fa',
+            'X-RapidAPI-Key': '5e5c5dcd9dmsh6104ddc534fba7dp170c60jsn3d6d9f75dea7',
             'X-RapidAPI-Host': 'shazam.p.rapidapi.com'
         }
     };
