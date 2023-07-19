@@ -13,8 +13,19 @@ var imageContainer = (document.querySelector('#albumCover'));
 var linkContainer = (document.querySelector('#url'));
 var linkEl = document.querySelector('#link');
 var imageEl = document.querySelector('#coverImage');
+var adamId = ""
 
 
+returnButton = document.querySelector('#return-btn')
+returnButton.addEventListener('click', returnHome)
+var today = dayjs()
+$('#todaysDate').text(today.format('dddd'))
+
+
+function returnHome() {
+    let queryString = './index.html?q='
+    location.assign(queryString)
+}
 
 
 
@@ -36,11 +47,13 @@ $(function () {
         artistContainer.innerHTML = ((data).tracks.hits[0].track.subtitle);
         imageEl.src = ((data).tracks.hits[0].track.images.coverart);
         linkEl.href = ((data).tracks.hits[0].track.url); 
+        adamId = ((data).artists.hits[0].artist.adamid)
+
     })
     .catch(err => {
     console.error(err);
     });
-    
+   
     initSearchHistory();
 
     $('.btn').on("click", function(event) {
@@ -117,3 +130,64 @@ function renderSearchHistory() {
     }
     renderSearchHistory();
   }
+
+  songSection1 = document.getElementById('songs-results1')
+
+
+function DailyTopSongDisplay(){
+const settings = {
+	async: true,
+	crossDomain: true,
+	url: 'https://shazam.p.rapidapi.com/charts/track?locale=en-US&pageSize=1&startFrom=0',
+	method: 'GET',
+	headers: {
+		'X-RapidAPI-Key': '4ac1b5c699msha0388287f4d5944p19ae56jsn0e4cb01579fa',
+		'X-RapidAPI-Host': 'shazam.p.rapidapi.com'
+	}
+};
+
+$.ajax(settings).done(function (response) {
+	console.log(response);
+    
+    var createList1 = document.createElement('ul')
+    var listArtist1 = document.createElement('li')
+    var listSong1 = document.createElement('li')
+    var listImg1 = document.createElement('img')
+    var listLink1 = document.getElementById('link1')
+    listImg1.setAttribute("style", "width:50px")
+    createList1.setAttribute('style', 'list-style:none')
+    songSection1.setAttribute('style', 'text-align:center')
+    
+
+    listArtist1.textContent = response.tracks[0].subtitle
+    listSong1.textContent = response.tracks[0].title
+    listImg1.src = response.tracks[0].images.coverart
+    listLink1.href = response.tracks[0].url
+    
+    songSection1.appendChild(createList1)
+    createList1.appendChild(listImg1)
+    createList1.appendChild(listSong1)
+    createList1.appendChild(listArtist1)
+    createList1.appendChild(listLink1)
+});
+
+}
+
+DailyTopSongDisplay() 
+
+function artistTopSong() {
+const settings = {
+	async: true,
+	crossDomain: true,
+	url: `https://shazam.p.rapidapi.com/artists/get-top-songs?id=${adamId}=en-US`,
+	method: 'GET',
+	headers: {
+		'X-RapidAPI-Key': 'ff7ed044a1msh8cba868d333ad14p154791jsn93407cfb12ef',
+		'X-RapidAPI-Host': 'shazam.p.rapidapi.com'
+	}
+};
+
+$.ajax(settings).done(function (response) {
+	console.log(response);
+});
+}
