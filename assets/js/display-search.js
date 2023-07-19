@@ -14,7 +14,13 @@ var linkContainer = (document.querySelector('#url'));
 var linkEl = document.querySelector('#link');
 var imageEl = document.querySelector('#coverImage');
 
+returnButton = document.querySelector('#return-btn')
+returnButton.addEventListener('click', returnHome)
 
+function returnHome() {
+    let queryString = './index.html?q='
+    location.assign(queryString)
+}
 
 
 
@@ -117,3 +123,43 @@ function renderSearchHistory() {
     }
     renderSearchHistory();
   }
+
+  artistSection = document.getElementById('songs-results')
+
+function topSongsDisplay(){
+const settings = {
+	async: true,
+	crossDomain: true,
+	url: 'https://shazam.p.rapidapi.com/charts/track?locale=en-US&pageSize=3&startFrom=0',
+	method: 'GET',
+	headers: {
+		'X-RapidAPI-Key': '4ac1b5c699msha0388287f4d5944p19ae56jsn0e4cb01579fa',
+		'X-RapidAPI-Host': 'shazam.p.rapidapi.com'
+	}
+};
+
+$.ajax(settings).done(function (response) {
+	console.log(response);
+    
+    var createList = document.createElement('ul')
+    var listArtist = document.createElement('li')
+    var listSong = document.createElement('li')
+    var listImg = document.createElement('img')
+    var listLink = document.createElement('a')
+    listImg.setAttribute("style", "width:50px")
+
+    listArtist.textContent = response.tracks[0].subtitle
+    listSong.textContent = response.tracks[0].title
+    listImg.src = response.tracks[0].images.coverart
+    listLink.href = response.tracks[0].url
+    
+    artistSection.appendChild(createList)
+    createList.appendChild(listArtist)
+    createList.appendChild(listSong)
+    createList.appendChild(listImg)
+    createList.appendChild(listLink)
+});
+
+}
+
+topSongsDisplay()
