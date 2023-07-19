@@ -1,6 +1,6 @@
 var userInput
 var randomButtonArtist = document.querySelector('#random-btn')
-var randomButtonArtist = document.querySelector('#random-btn')
+
 $(function () {
     
     $('.btn-primary').on("click", function(event) {
@@ -42,12 +42,12 @@ function queryString() {
 
 function randomSong() {
     const settings = {
-        async: true,
+        async: false,
         crossDomain: true,
-        url: 'https://shazam.p.rapidapi.com/charts/track?locale=en-US&pageSize=100&startFrom=0',
+        url: 'https://shazam.p.rapidapi.com/charts/track?locale=en-US&pageSize=20&startFrom=0',
         method: 'GET',
         headers: {
-            'X-RapidAPI-Key': 'd2c16f9919mshf8833d93f140df5p1b038djsn746b6bea0db0',
+            'X-RapidAPI-Key': '4ac1b5c699msha0388287f4d5944p19ae56jsn0e4cb01579fa',
             'X-RapidAPI-Host': 'shazam.p.rapidapi.com'
         }
     };
@@ -60,9 +60,10 @@ function randomSong() {
     });
 }
 
-randomSong()
+
 
 function randomButton() {
+    randomSong()
     let queryString = './results.html?q='+randomChosenSong
     location.assign(queryString)
 }
