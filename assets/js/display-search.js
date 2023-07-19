@@ -192,15 +192,11 @@ $.ajax(settings).done(function (response) {
     createList1.appendChild(listArtist1)
     createList1.appendChild(listLink1)
     
-
-
-
-
     var createList2 = document.createElement('ul')
     var listArtist2 = document.createElement('li')
     var listSong2 = document.createElement('li')
     var listImg2 = document.createElement('img')
-    var listLink2 = document.getElementById('link1')
+    var listLink2 = document.getElementById('link2')
     listImg2.setAttribute("style", "width:50px")
     createList2.setAttribute('style', 'list-style:none')
     songSection2.setAttribute('style', 'text-align:center')
