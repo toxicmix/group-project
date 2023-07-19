@@ -13,7 +13,14 @@ var imageContainer = (document.querySelector('#albumCover'));
 var linkContainer = (document.querySelector('#url'));
 var linkEl = document.querySelector('#link');
 var imageEl = document.querySelector('#coverImage');
-var adamId = ""
+
+var sfx = {
+  push: new Howl({
+      src: [
+          './assets/sounds/mouse-click-153941.mp3'
+      ]
+  })
+}
 
 
 returnButton = document.querySelector('#return-btn')
@@ -47,8 +54,7 @@ $(function () {
         artistContainer.innerHTML = ((data).tracks.hits[0].track.subtitle);
         imageEl.src = ((data).tracks.hits[0].track.images.coverart);
         linkEl.href = ((data).tracks.hits[0].track.url); 
-        adamId = ((data).artists.hits[0].artist.adamid)
-
+        
     })
     .catch(err => {
     console.error(err);
@@ -64,6 +70,7 @@ $(function () {
             appendToHistory($('#search-input').val())
             console.log(recentSearch)
             getSearch();
+            sfx.push.play()
         }  
     }
     );
@@ -175,19 +182,4 @@ $.ajax(settings).done(function (response) {
 
 DailyTopSongDisplay() 
 
-function artistTopSong() {
-const settings = {
-	async: true,
-	crossDomain: true,
-	url: `https://shazam.p.rapidapi.com/artists/get-top-songs?id=${adamId}=en-US`,
-	method: 'GET',
-	headers: {
-		'X-RapidAPI-Key': 'ff7ed044a1msh8cba868d333ad14p154791jsn93407cfb12ef',
-		'X-RapidAPI-Host': 'shazam.p.rapidapi.com'
-	}
-};
 
-$.ajax(settings).done(function (response) {
-	console.log(response);
-});
-}

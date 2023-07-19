@@ -69,3 +69,4 @@ function randomButton() {
 }
 
 randomButtonArtist.addEventListener('click', randomButton)
+
