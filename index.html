@@ -9,7 +9,7 @@
 </head>
 <body>
  
-    <h1 class="title body">Title Project</h1>
+    <h1 class="title body">Shazingle</h1>
     <p>Click the "Random Song" button to find some New Music!</p>
     <div id="container">
       <video autoplay muted loop> 
@@ -17,38 +17,30 @@
         <div id="video_cover"></div>
       </video>
     </div>
-
     <div>
         <nav class="navbar bg-body-tertiary">
             <form class="container-fluid justify-content-start">
-            <button class="btn btn-outline-success me-2" type="button" id="random-btn">Random Top Hit</button>
+            <button class="btn btn-outline-success me-2" type="button" id="random-btn">Random Top Hit</button>          
+            
             </form>
         </nav>
     </div>
     <h2>Or</h2>
     <form id="fieldset">
         <fieldset>
-          <legend></legend>
           <div class="mb-4">
             <label for="TextInput" class="form-label">Enter an artist, song, or album name.</label>
-            <input type="text" id="TextInput" class="form-control" placeholder=" input">
+            <input type="text" id="TextInput" class="form-control" placeholder="Ex. Post Malone"/>
           </div>
           <div class="mb-3">
-            <label for="Select" class="form-label">Choose Criteria</label>
-            <select id="Select" class="form-select">
-              <option>Artist</option>
-              <option>Song</option>
-              <option>Album</option>
-            </select>
+            <button id="submit-form" type="submit" class="btn btn-primary">Submit</button>
           </div>
-          <button id= "submit-form" type="submit" class="btn btn-primary">Submit</button>
         </fieldset>
       </form>
 
     <div>
         <footer>🎶 Powered by Shazam 🎶</footer>
     </div>
-
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
