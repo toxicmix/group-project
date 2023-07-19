@@ -13,7 +13,6 @@ var imageContainer = (document.querySelector('#albumCover'));
 var linkContainer = (document.querySelector('#url'));
 var linkEl = document.querySelector('#link');
 var imageEl = document.querySelector('#coverImage');
-var adamId = ""
 
 
 returnButton = document.querySelector('#return-btn')
@@ -34,7 +33,7 @@ $(function () {
 
     fetch(`https://shazam.p.rapidapi.com/search?term=${search}&locale=en-US&offset=0&limit=5`, {
     "headers": {
-    "x-rapidapi-key": "4ac1b5c699msha0388287f4d5944p19ae56jsn0e4cb01579fa",
+    "x-rapidapi-key": "5e5c5dcd9dmsh6104ddc534fba7dp170c60jsn3d6d9f75dea7",
     "x-rapidapi-host": "shazam.p.rapidapi.com"
     }
     })
@@ -47,14 +46,15 @@ $(function () {
         artistContainer.innerHTML = ((data).tracks.hits[0].track.subtitle);
         imageEl.src = ((data).tracks.hits[0].track.images.coverart);
         linkEl.href = ((data).tracks.hits[0].track.url); 
-        adamId = ((data).artists.hits[0].artist.adamid)
+        adamId = ((data).artists.hits[0].artist.adamid);
 
     })
     .catch(err => {
     console.error(err);
     });
-   
+
     initSearchHistory();
+    DailyTopSongDisplay() 
 
     $('.btn').on("click", function(event) {
         event.preventDefault();
@@ -67,12 +67,31 @@ $(function () {
         }  
     }
     );
+    $('.btnHistory').on("click", function(event) {
+      event.preventDefault();
+      console.log("got clicked")
+      handleSearchHistoryClick();
+      //userInput = ($(this).attr('history-btn'))
+      //getSearch();
+  }
+  );
 });
+
+function handleSearchHistoryClick(e) {
+  // Don't do search if current elements is not a search history button
+  if (!e.target.matches('.btn-history')) {
+    return;
+  }
+
+  var btn = e.target;
+  userInput = btn.getAttribute('data-search');
+  getSearch();
+}
 
 function getSearch(){
     fetch(`https://shazam.p.rapidapi.com/search?term=${userInput}&locale=en-US&offset=0&limit=5`, {
     "headers": {
-    "x-rapidapi-key": "4ac1b5c699msha0388287f4d5944p19ae56jsn0e4cb01579fa",
+    "x-rapidapi-key": "5e5c5dcd9dmsh6104ddc534fba7dp170c60jsn3d6d9f75dea7",
     "x-rapidapi-host": "shazam.p.rapidapi.com"
     }
     })
@@ -84,7 +103,8 @@ function getSearch(){
     titleContainer.innerHTML = ((data).tracks.hits[0].track.title);
     artistContainer.innerHTML = ((data).tracks.hits[0].track.subtitle);
     imageEl.src = ((data).tracks.hits[0].track.images.coverart);
-    linkEl.href = ((data).tracks.hits[0].track.url); 
+    linkEl.href = ((data).tracks.hits[0].track.url);
+    adamId = ((data).artists.hits[0].artist.adamid);
     })
     .catch(err => {
     console.error(err);
@@ -100,8 +120,9 @@ function renderSearchHistory() {
     for (var i = recentSearch.length - 1; i >= 0; i--) {
       var btn = document.createElement('button');
       btn.setAttribute('type', 'button');
-      btn.setAttribute('aria-controls', 'today forecast');
+      btn.style.color = "magenta";
       btn.classList.add('history-btn', 'btn-history');
+      btn.setAttribute('id','btnHistory');
   
       // `data-search` allows access to city name when click handler is invoked
       btn.setAttribute('data-search', recentSearch[i]);
@@ -132,16 +153,17 @@ function renderSearchHistory() {
   }
 
   songSection1 = document.getElementById('songs-results1')
+  songSection2 = document.getElementById('songs-results2')
 
 
 function DailyTopSongDisplay(){
 const settings = {
 	async: true,
 	crossDomain: true,
-	url: 'https://shazam.p.rapidapi.com/charts/track?locale=en-US&pageSize=1&startFrom=0',
+	url: 'https://shazam.p.rapidapi.com/charts/track?locale=en-US&pageSize=5&startFrom=0',
 	method: 'GET',
 	headers: {
-		'X-RapidAPI-Key': '4ac1b5c699msha0388287f4d5944p19ae56jsn0e4cb01579fa',
+		'X-RapidAPI-Key': '5e5c5dcd9dmsh6104ddc534fba7dp170c60jsn3d6d9f75dea7',
 		'X-RapidAPI-Host': 'shazam.p.rapidapi.com'
 	}
 };
@@ -169,25 +191,37 @@ $.ajax(settings).done(function (response) {
     createList1.appendChild(listSong1)
     createList1.appendChild(listArtist1)
     createList1.appendChild(listLink1)
+    
+    var createList2 = document.createElement('ul')
+    var listArtist2 = document.createElement('li')
+    var listSong2 = document.createElement('li')
+    var listImg2 = document.createElement('img')
+    var listLink2 = document.getElementById('link2')
+    listImg2.setAttribute("style", "width:50px")
+    createList2.setAttribute('style', 'list-style:none')
+    songSection2.setAttribute('style', 'text-align:center')
+    
+
+    listArtist2.textContent = response.tracks[1].subtitle
+    listSong2.textContent = response.tracks[1].title
+    listImg2.src = response.tracks[1].images.coverart
+    listLink2.href = response.tracks[1].url
+    
+    songSection2.appendChild(createList2)
+    createList2.appendChild(listImg2)
+    createList2.appendChild(listSong2)
+    createList2.appendChild(listArtist2)
+    createList2.appendChild(listLink2)
 });
 
 }
 
-DailyTopSongDisplay() 
 
-function artistTopSong() {
-const settings = {
-	async: true,
-	crossDomain: true,
-	url: `https://shazam.p.rapidapi.com/artists/get-top-songs?id=${adamId}=en-US`,
-	method: 'GET',
-	headers: {
-		'X-RapidAPI-Key': 'ff7ed044a1msh8cba868d333ad14p154791jsn93407cfb12ef',
-		'X-RapidAPI-Host': 'shazam.p.rapidapi.com'
-	}
-};
-
-$.ajax(settings).done(function (response) {
-	console.log(response);
-});
+$('.btnHistory').on("click", function(event) {
+  event.preventDefault();
+  console.log("got clicked")
+  handleSearchHistoryClick();
+  //userInput = ($(this).attr('history-btn'))
+  //getSearch();
 }
+);
