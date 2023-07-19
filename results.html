@@ -16,7 +16,7 @@
 </head>
 
 <body>
-  <div class="flex-row align-start align-stretch-md align-content-start align-content-stretch-md min-100-vh bg-primary">
+  <div class="flex-row align-start align-stretch-md align-content-start align-content-stretch-md min-100-vh bg-blue">
     <div class="col-12 col-md-3 p-3">
       <h1 class="text-primary">Shazam Search Engine</h1>
       <form id="search-form" class="mb-2">
@@ -34,11 +34,9 @@
           <div class="col-6" div id="songTitle"></div>
           <div class="col-6" div id ="artistName"></div>
           <div class="col-6" div id="albumCover">
-            <h2>Album Cover</h2>
             <img id="coverImage" src="" alt="song cover image" width="200" height="200">
           </div>
           <div class="col-6" div id="url">
-            <h2>Link</h2>
             <a id="link" href="" target="_blank">Link to song!</a>
           </div>
         </div>
@@ -47,7 +45,7 @@
     <div class="list-group" id="history"></div>
   </div>
 
-  <div class = "col-12 col-md-3 bg-light p-3">
+  <div class = "col-12 col-md-3 p-3">
     <h2>Top Artists</h2>
     <div id = "artists-results"></div>
   </div>
@@ -57,6 +55,10 @@
       <div id = "songs-results1">
         <a id="link1" href="" target="_blank">Listen!</a>
       </div>
+    </div>
+
+    <div class = "col-12 col-md-3 p-3">
+      <div class = "container" id = "searchHistoryContainer"></div>
     </div>
  
 <!-- 

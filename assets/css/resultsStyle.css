@@ -32,11 +32,6 @@ div, h1{
   margin-right: 10%;
 }
 
-#coverImage {
-  max-width: 50%;
-  max-height: 100%;
-}
-
 #artistName {
   font-size: xx-large;
 }
