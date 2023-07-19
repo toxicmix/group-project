@@ -44,7 +44,7 @@ function randomSong() {
     const settings = {
         async: false,
         crossDomain: true,
-        url: 'https://shazam.p.rapidapi.com/charts/track?locale=en-US&pageSize=100&startFrom=0',
+        url: 'https://shazam.p.rapidapi.com/charts/track?locale=en-US&pageSize=20&startFrom=0',
         method: 'GET',
         headers: {
             'X-RapidAPI-Key': '4ac1b5c699msha0388287f4d5944p19ae56jsn0e4cb01579fa',
