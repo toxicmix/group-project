@@ -5,7 +5,7 @@ var search = currentUrl.split('=')[1]
 search = search.replace(/%20/g , " ")
 console.log(search);
 //recentSearchHandeler(search)
-var searchHistoryContainer = document.querySelector('#history');
+var searchHistoryContainer = document.querySelector('#searchHistoryContainer');
 var resultContainer = document.querySelector('#result-text');
 var titleContainer = document.querySelector('#songTitle');
 var artistContainer = document.querySelector('#artistName');
