@@ -33,7 +33,7 @@ $(function () {
 
     fetch(`https://shazam.p.rapidapi.com/search?term=${search}&locale=en-US&offset=0&limit=5`, {
     "headers": {
-    "x-rapidapi-key": "4ac1b5c699msha0388287f4d5944p19ae56jsn0e4cb01579fa",
+    "x-rapidapi-key": "5e5c5dcd9dmsh6104ddc534fba7dp170c60jsn3d6d9f75dea7",
     "x-rapidapi-host": "shazam.p.rapidapi.com"
     }
     })
@@ -54,6 +54,7 @@ $(function () {
     });
 
     initSearchHistory();
+    DailyTopSongDisplay() 
 
     $('.btn').on("click", function(event) {
         event.preventDefault();
@@ -90,7 +91,7 @@ function handleSearchHistoryClick(e) {
 function getSearch(){
     fetch(`https://shazam.p.rapidapi.com/search?term=${userInput}&locale=en-US&offset=0&limit=5`, {
     "headers": {
-    "x-rapidapi-key": "4ac1b5c699msha0388287f4d5944p19ae56jsn0e4cb01579fa",
+    "x-rapidapi-key": "5e5c5dcd9dmsh6104ddc534fba7dp170c60jsn3d6d9f75dea7",
     "x-rapidapi-host": "shazam.p.rapidapi.com"
     }
     })
@@ -119,6 +120,7 @@ function renderSearchHistory() {
     for (var i = recentSearch.length - 1; i >= 0; i--) {
       var btn = document.createElement('button');
       btn.setAttribute('type', 'button');
+      btn.style.color = "magenta";
       btn.classList.add('history-btn', 'btn-history');
       btn.setAttribute('id','btnHistory');
   
@@ -161,7 +163,7 @@ const settings = {
 	url: 'https://shazam.p.rapidapi.com/charts/track?locale=en-US&pageSize=5&startFrom=0',
 	method: 'GET',
 	headers: {
-		'X-RapidAPI-Key': '4ac1b5c699msha0388287f4d5944p19ae56jsn0e4cb01579fa',
+		'X-RapidAPI-Key': '5e5c5dcd9dmsh6104ddc534fba7dp170c60jsn3d6d9f75dea7',
 		'X-RapidAPI-Host': 'shazam.p.rapidapi.com'
 	}
 };
@@ -218,7 +220,7 @@ $.ajax(settings).done(function (response) {
 
 }
 
-DailyTopSongDisplay() 
+
 $('.btnHistory').on("click", function(event) {
   event.preventDefault();
   console.log("got clicked")
