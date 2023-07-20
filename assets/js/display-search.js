@@ -233,3 +233,4 @@ $('.btnHistory').on("click", function(event) {
   //getSearch();
 }
 );
+
