@@ -15,6 +15,15 @@ var linkEl = document.querySelector('#link');
 var imageEl = document.querySelector('#coverImage');
 
 
+var sfx = {
+  push: new Howl({
+      src: [
+          './assets/sounds/mouse-click-153941.mp3'
+      ]
+  })
+}
+
+
 returnButton = document.querySelector('#return-btn')
 returnButton.addEventListener('click', returnHome)
 var today = dayjs()
@@ -46,8 +55,7 @@ $(function () {
         artistContainer.innerHTML = ((data).tracks.hits[0].track.subtitle);
         imageEl.src = ((data).tracks.hits[0].track.images.coverart);
         linkEl.href = ((data).tracks.hits[0].track.url); 
-        adamId = ((data).artists.hits[0].artist.adamid);
-
+        
     })
     .catch(err => {
     console.error(err);
@@ -64,6 +72,7 @@ $(function () {
             appendToHistory($('#search-input').val())
             console.log(recentSearch)
             getSearch();
+            sfx.push.play()
         }  
     }
     );
@@ -104,7 +113,6 @@ function getSearch(){
     artistContainer.innerHTML = ((data).tracks.hits[0].track.subtitle);
     imageEl.src = ((data).tracks.hits[0].track.images.coverart);
     linkEl.href = ((data).tracks.hits[0].track.url);
-    adamId = ((data).artists.hits[0].artist.adamid);
     })
     .catch(err => {
     console.error(err);

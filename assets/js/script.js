@@ -4,12 +4,16 @@ var randomButtonArtist = document.querySelector('#random-btn')
 $(function () {
     
     $('.btn-primary').on("click", function(event) {
+        if (!$('#TextInput').val()) {
+          alert('Please enter a valid search.')
+          return}
         event.preventDefault();
         userInput = ($('#TextInput').val())
         if(($('#TextInput').val()) !== undefined){
             console.log($('#TextInput').val())
-            queryString();
             getSearch();
+            queryString();
+          
         }  
     }
     );
