@@ -11,8 +11,9 @@ $(function () {
         userInput = ($('#TextInput').val())
         if(($('#TextInput').val()) !== undefined){
             console.log($('#TextInput').val())
-            queryString();
             getSearch();
+            queryString();
+          
         }  
     }
     );

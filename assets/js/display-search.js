@@ -14,6 +14,7 @@ var linkContainer = (document.querySelector('#url'));
 var linkEl = document.querySelector('#link');
 var imageEl = document.querySelector('#coverImage');
 
+
 var sfx = {
   push: new Howl({
       src: [
@@ -112,7 +113,6 @@ function getSearch(){
     artistContainer.innerHTML = ((data).tracks.hits[0].track.subtitle);
     imageEl.src = ((data).tracks.hits[0].track.images.coverart);
     linkEl.href = ((data).tracks.hits[0].track.url);
-    adamId = ((data).artists.hits[0].artist.adamid);
     })
     .catch(err => {
     console.error(err);
