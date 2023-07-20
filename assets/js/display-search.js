@@ -124,8 +124,12 @@ function getSearch(){
 function renderSearchHistory() {
     searchHistoryContainer.innerHTML = '';
   
+    counter = 0;
     // Start at end of history array and count down to show the most recent at the top.
     for (var i = recentSearch.length - 1; i >= 0; i--) {
+      if(counter > 4){
+        break;
+      }
       var btn = document.createElement('button');
       btn.setAttribute('type', 'button');
       btn.style.color = "magenta";
@@ -136,6 +140,7 @@ function renderSearchHistory() {
       btn.setAttribute('data-search', recentSearch[i]);
       btn.textContent = recentSearch[i];
       searchHistoryContainer.append(btn);
+      counter++;
     }
   }
   
