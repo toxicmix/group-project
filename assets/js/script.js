@@ -4,6 +4,9 @@ var randomButtonArtist = document.querySelector('#random-btn')
 $(function () {
     
     $('.btn-primary').on("click", function(event) {
+        if (!$('#TextInput').val()) {
+          alert('Please enter a valid search.')
+          return}
         event.preventDefault();
         userInput = ($('#TextInput').val())
         if(($('#TextInput').val()) !== undefined){
@@ -70,8 +73,6 @@ function randomButton() {
 
 randomButtonArtist.addEventListener('click', randomButton)
 
-<<<<<<< HEAD
-=======
 var video = document.querySelector('video')
   , container = document.querySelector('#container');
  
@@ -108,4 +109,3 @@ var setVideoDimensions = function () {
  
 video.addEventListener('loadedmetadata', setVideoDimensions, false);
 window.addEventListener('resize', setVideoDimensions, false);
->>>>>>> 30ac60c6dee6f3a9872cdcf4d47c875118a0a4e7
