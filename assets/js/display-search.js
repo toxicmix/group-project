@@ -76,26 +76,8 @@ $(function () {
         }  
     }
     );
-    $('.btnHistory').on("click", function(event) {
-      event.preventDefault();
-      console.log("got clicked")
-      handleSearchHistoryClick();
-      //userInput = ($(this).attr('history-btn'))
-      //getSearch();
-  }
-  );
 });
 
-function handleSearchHistoryClick(e) {
-  // Don't do search if current elements is not a search history button
-  if (!e.target.matches('.btn-history')) {
-    return;
-  }
-
-  var btn = e.target;
-  userInput = btn.getAttribute('data-search');
-  getSearch();
-}
 
 function getSearch(){
     fetch(`https://shazam.p.rapidapi.com/search?term=${userInput}&locale=en-US&offset=0&limit=5`, {
@@ -230,11 +212,9 @@ $.ajax(settings).done(function (response) {
 }
 
 
-$('.btnHistory').on("click", function(event) {
-  event.preventDefault();
-  console.log("got clicked")
-  handleSearchHistoryClick();
-  //userInput = ($(this).attr('history-btn'))
-  //getSearch();
-}
-);
+searchHistoryContainer.addEventListener('click', function (e) {
+  if (e.target.classList.contains('history-btn')) {
+    userInput = e.target.innerHTML
+    getSearch()
+  }
+})
