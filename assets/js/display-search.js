@@ -212,3 +212,9 @@ $.ajax(settings).done(function (response) {
 }
 
 
+searchHistoryContainer.addEventListener('click', function (e) {
+  if (e.target.classList.contains('history-btn')) {
+    userInput = e.target.innerHTML
+    getSearch()
+  }
+})
