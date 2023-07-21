@@ -42,7 +42,7 @@ $(function () {
 
     fetch(`https://shazam.p.rapidapi.com/search?term=${search}&locale=en-US&offset=0&limit=5`, {
     "headers": {
-    "x-rapidapi-key": "5e5c5dcd9dmsh6104ddc534fba7dp170c60jsn3d6d9f75dea7",
+    "x-rapidapi-key": "ff7ed044a1msh8cba868d333ad14p154791jsn93407cfb12ef",
     "x-rapidapi-host": "shazam.p.rapidapi.com"
     }
     })
@@ -82,7 +82,7 @@ $(function () {
 function getSearch(){
     fetch(`https://shazam.p.rapidapi.com/search?term=${userInput}&locale=en-US&offset=0&limit=5`, {
     "headers": {
-    "x-rapidapi-key": "5e5c5dcd9dmsh6104ddc534fba7dp170c60jsn3d6d9f75dea7",
+    "x-rapidapi-key": "ff7ed044a1msh8cba868d333ad14p154791jsn93407cfb12ef",
     "x-rapidapi-host": "shazam.p.rapidapi.com"
     }
     })
@@ -158,7 +158,7 @@ const settings = {
 	url: 'https://shazam.p.rapidapi.com/charts/track?locale=en-US&pageSize=5&startFrom=0',
 	method: 'GET',
 	headers: {
-		'X-RapidAPI-Key': '5e5c5dcd9dmsh6104ddc534fba7dp170c60jsn3d6d9f75dea7',
+		'X-RapidAPI-Key': 'ff7ed044a1msh8cba868d333ad14p154791jsn93407cfb12ef',
 		'X-RapidAPI-Host': 'shazam.p.rapidapi.com'
 	}
 };
